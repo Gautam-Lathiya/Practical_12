@@ -1,0 +1,62 @@
+﻿@model List<Test1.Models.Employee>
+
+@{
+    ViewBag.Title = "Employee Index";
+}
+
+<h2>Employee Operations</h2>
+
+<div>
+    <form action="/Employee/InsertOne" method="post" style="display:inline;">
+        <input type="submit" value="Insert One Record" class="btn btn-primary" />
+    </form>
+    <form action="/Employee/InsertTestData" method="post" style="display:inline;">
+        <input type="submit" value="Insert Test Data" class="btn btn-secondary" />
+    </form>
+    <form action="/Employee/UpdateFirstName" method="post" style="display:inline;">
+        <input type="submit" value="Update First Name" class="btn btn-warning" />
+    </form>
+    <form action="/Employee/UpdateMiddleNames" method="post" style="display:inline;">
+        <input type="submit" value="Update Middle Names" class="btn btn-info" />
+    </form>
+    <form action="/Employee/DeleteById" method="post" style="display:inline;">
+        <input type="submit" value="Delete Id < 2" class="btn btn-danger" />
+    </form>
+    <form action="/Employee/DeleteAll" method="post" style="display:inline;">
+        <input type="submit" value="Delete All" class="btn btn-dark" />
+    </form>
+</div>
+
+<br />
+<br />
+
+<h3>Employee List</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>DOB</th>
+            <th>Mobile Number</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.FirstName</td>
+                <td>@emp.MiddleName</td>
+                <td>@emp.LastName</td>
+                <td>@emp.DOB.ToShortDateString()</td>
+                <td>@emp.MobileNumber</td>
+                <td>@emp.Address</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
