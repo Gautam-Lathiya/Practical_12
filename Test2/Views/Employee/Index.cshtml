@@ -1,0 +1,69 @@
+﻿@model List<Test2.Models.Employee>
+@{
+    ViewBag.Title = "Test 2 - Employee Table";
+}
+
+<h2>Test 2 - Employee Operations</h2>
+
+<!-- Action Buttons -->
+<div>
+    <form action="@Url.Action("InsertRecords", "Employee")" method="post" style="display:inline;">
+        <input type="submit" value="Insert Records" class="btn btn-primary" />
+    </form>
+
+    <form action="@Url.Action("TotalSalary", "Employee")" method="get" style="display:inline;">
+        <input type="submit" value="Total Salary" class="btn btn-success" />
+    </form>
+
+    <form action="@Url.Action("FilterByDOB", "Employee")" method="get" style="display:inline;">
+        <input type="submit" value="Employees Born Before 01-01-2000" class="btn btn-warning" />
+    </form>
+
+    <form action="@Url.Action("CountNullMiddleName", "Employee")" method="get" style="display:inline;">
+        <input type="submit" value="Count NULL Middle Names" class="btn btn-danger" />
+    </form>
+</div>
+
+<br />
+
+<!-- Display ViewBag Results -->
+@if (TempData["TotalSalary"] != null)
+{
+    <h4>Total Salary: ₹@TempData["TotalSalary"]</h4>
+}
+
+@if (TempData["NullMiddleNameCount"] != null)
+{
+    <h4>Employees with NULL Middle Name: @TempData["NullMiddleNameCount"]</h4>
+}
+
+<!-- Employee Table -->
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>DOB</th>
+            <th>Mobile Number</th>
+            <th>Address</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.FirstName</td>
+                <td>@emp.MiddleName</td>
+                <td>@emp.LastName</td>
+                <td>@emp.DOB.ToString("yyyy-MM-dd")</td>
+                <td>@emp.MobileNumber</td>
+                <td>@emp.Address</td>
+                <td>₹@emp.Salary</td>
+            </tr>
+        }
+    </tbody>
+    </
