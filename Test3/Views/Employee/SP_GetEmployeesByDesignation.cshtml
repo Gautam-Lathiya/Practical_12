@@ -1,0 +1,53 @@
+﻿@model List<Test3.Models.EmployeeBasicDetail>
+
+@{
+    ViewBag.Title = "Employees By Designation";
+}
+
+<h2>Find Employees By Designation</h2>
+
+@using (Html.BeginForm("SP_GetEmployeesByDesignation", "Employee", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="designationId">Enter Designation ID:</label>
+        <input type="number" name="designationId" class="form-control" required />
+        <button type="submit" class="btn btn-primary mt-2">Search</button>
+    </div>
+}
+
+@if (Model != null && Model.Count > 0)
+{
+    <h3 class="mt-4">Employees</h3>
+    <table class="table table-bordered">
+        <tr>
+            <th>Employee ID</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>DOB</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Salary</th>
+        </tr>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.EmployeeId</td>
+                <td>@emp.FirstName</td>
+                <td>@emp.MiddleName</td>
+                <td>@emp.LastName</td>
+                <td>@emp.DOB.ToShortDateString()</td>
+                <td>@emp.MobileNumber</td>
+                <td>@emp.Address</td>
+                <td>@emp.Salary</td>
+            </tr>
+        }
+    </table>
+}
+else if (Model != null)
+{
+    <div class="alert alert-info">No employees found for this Designation ID.</div>
+}
+
+
+@Html.ActionLink("Back to Home", "Index", "Employee", new { }, new { @class = "btn btn-secondary" })

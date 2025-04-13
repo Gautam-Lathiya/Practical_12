@@ -1,0 +1,21 @@
+﻿@model Test3.Models.Designation
+
+@{
+    ViewBag.Title = "Add Designation";
+}
+
+<h2>Add New Designation</h2>
+
+@using (Html.BeginForm("SP_AddDesignation", "Employee", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.DesignationName)
+        @Html.TextBoxFor(m => m.DesignationName, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(m => m.DesignationName)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+}
+
+@Html.ActionLink("Back to Home", "Index", "Employee", new { }, new { @class = "btn btn-secondary" })
+

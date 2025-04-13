@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Employee Dashboard";
+}
+
+<h2>Employee Dashboard</h2>
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px;">
+    @Html.ActionLink("Insert Designations", "InsertDesignations", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Insert Employees", "InsertEmployees", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Count Emp By Designation", "CountEmpByDesignation", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Display with Designation", "DisplayWithDesignation", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Display From View", "DisplayFromView", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Add Designation (SP)", "SP_AddDesignation", null, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Add Employee (SP)", "SP_AddEmployee", null, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Designations With >1 Employees", "DesignationsWithMultipleEmployees", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Employees Ordered By DOB (SP)", "SP_GetEmployeesOrderedByDOB", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Employees By Designation (SP)", "SP_GetEmployeesByDesignation", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Max Salary Employee", "GetEmployeeWithMaxSalary", null, new { @class = "btn btn-danger" })
+</div>
